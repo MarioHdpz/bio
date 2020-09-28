@@ -1,5 +1,4 @@
 """Models definition"""
-from colorfield.fields import ColorField
 from django.db import models
 from positions import PositionField
 
@@ -9,7 +8,8 @@ class Stage(models.Model):
 
     name = models.CharField(max_length=40)
     slug = models.SlugField(max_length=40)
-    color = ColorField(default="#000000")
+    image = models.ImageField(upload_to="stages", null=True)
+    position = PositionField()
 
     def __str__(self):
         """Set admin label"""
@@ -29,7 +29,7 @@ class Story(models.Model):
     title = models.CharField(max_length=20)
     text = models.TextField(max_length=140)
     icon = models.CharField(max_length=20)
-    position = PositionField(collection="stage")
+    date = models.DateField()
 
     def __str__(self):
         """Set admin name"""

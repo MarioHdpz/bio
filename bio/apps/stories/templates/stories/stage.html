@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+{% for story in stage.story_set.all %}
+<div class="col-sm-6">
+<div class="card">
+    <div class="card-body">
+    <h5 class="card-title">{{ story.title }}</h5>
+    <p class="card-text">{{ story.text }}</p>
+    <i class="fas fa-{{ story.icon }}"></i>
+    </div>
+</div>
+</div>
+{% endfor %}
+{% endblock %}
