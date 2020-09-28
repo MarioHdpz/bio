@@ -27,7 +27,7 @@ class Story(models.Model):
 
     stage = models.ForeignKey(Stage, on_delete=models.PROTECT)
     title = models.CharField(max_length=20)
-    text = models.TextField(max_length=140)
+    text = models.TextField(max_length=280)
     icon = models.ImageField(upload_to="story-icons", null=True)
     date = models.DateField()
 
