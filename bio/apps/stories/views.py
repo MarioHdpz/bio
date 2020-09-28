@@ -1,3 +1,10 @@
-from django.shortcuts import render
+"""Story related views"""
 
-# Create your views here.
+from django.views import generic
+
+from .models import Stage
+
+
+class StagesView(generic.ListView):
+    model = Stage
+    context_object_name = "stages"
