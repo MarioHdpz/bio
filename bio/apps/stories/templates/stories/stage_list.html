@@ -1,16 +1,23 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <div class="row">
-{% for stage in stages %}
+  {% for stage in stages %}
   <div class="col-sm-6 col-md-4 py-2">
-    <div class="card bg-dark text-white">
-      <img class="card-img p-5" src="{{ stage.image.url }}" alt="Card image">
-      <div class="card-img-overlay">
+    <div
+      class="card bg-dark text-white stage"
+    >
+      <img class="card-img p-5" src="{{ stage.image.url }}" alt="Card image" />
+      <div class="card-img-overlay" data-route="{% url 'stories' slug=stage.slug %}">
         <h1 class="card-title text-bold">{{ stage.name }}</h1>
       </div>
     </div>
   </div>
-{% endfor %}
+  {% endfor %}
 </div>
+{% endblock %} {% block js %}
+<script>
+  $(".stage .card-img-overlay").click(function (event) {
+    var route = $(event.target).data("route");
+    window.location.href = route;
+  });
+</script>
 {% endblock %}
